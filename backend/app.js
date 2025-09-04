@@ -35,7 +35,8 @@ dotenv.config();
 // CORS config MUST be defined before using
 const allowedOrigins = [
   "http://localhost:3000",
-  "http://localhost:5173"
+  "http://localhost:5173",
+  "https://sportshub-frontend.onrender.com"
 ];
 
 const corsOptions = {
