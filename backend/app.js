@@ -34,10 +34,11 @@ dotenv.config();
 
 // CORS config MUST be defined before using
 const allowedOrigins = [
+  process.env.CLIENT_URL,
   "http://localhost:3000",
   "http://localhost:5173",
   "https://sportshub-frontend.onrender.com"
-];
+].filter(Boolean);
 
 const corsOptions = {
   origin: (origin, callback) => {
@@ -62,6 +63,7 @@ app.use(express.urlencoded({ extended: true, limit: "25mb" }));
 app.use(cookieParser());
 app.use(helmet({
   crossOriginResourcePolicy: { policy: "cross-origin" },
+  // Allow OAuth popups and postMessage between windows
   crossOriginOpenerPolicy: { policy: "same-origin-allow-popups" },
   crossOriginEmbedderPolicy: false,
 }));
